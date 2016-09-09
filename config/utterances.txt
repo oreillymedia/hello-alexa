@@ -1,0 +1,3 @@
+GetTideIntent when is high tide in {City}
+GetTideIntent when will it be high tide in {City}
+GetTideIntent what time is high tide (for|in) {City}
