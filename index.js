@@ -8,7 +8,7 @@ var SKILL_NAME = 'Tide Pooler';
 
 exports.handler = function(event, context, callback) {
     var alexa = Alexa.handler(event, context);
-    alexa.APP_ID = APP_ID;
+    alexa.APP_ID = process.env.APP_ID;
     alexa.registerHandlers(handlers);
     alexa.execute();
 };
