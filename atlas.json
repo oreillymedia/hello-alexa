@@ -1,7 +1,7 @@
 {
   "branch": "master",
   "files": [
-    "README.md"
+    "README.asciidoc"
   ],
   "formats": {
     "pdf": {
