@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "zip": "zip -r hello-alexa.zip index.js package.json node_modules",
+    "zip": "zip -r hello-alexa.zip index.js package.json .env node_modules",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
