@@ -12,6 +12,13 @@
 
 <img src="images/alexa-skills-portal.png" width="100%"/>
 
+* Give the skill a name
+  * "Name of the skill that is displayed to customers in the Alexa app. Must be between 2-50 characters."
+* Give the skill an "invocation name"
+  * "The name customers use to activate the skill. For example, “Alexa ask Tide Pooler…”."  
+  * See  [Choosing the Invocation Name for a Custom Skill
+](https://developer.amazon.com/appsandservices/solutions/alexa/alexa-skills-kit/docs/choosing-the-invocation-name-for-an-alexa-skill) for more detail on choosing a name.
+
 # Getting started
 
 * Clone this repository
