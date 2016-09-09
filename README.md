@@ -2,15 +2,23 @@
 
 # Prerequisites
 
-* Install node (v. 5 or later)
-* An AWS account on Lambda, Alexa
+* Install Node.js and update npm (v. 5 or later) using these instructions: https://docs.npmjs.com/getting-started/installing-node
 
+* You will need an AWS account; the [free tier](https://aws.amazon.com/free/) is sufficient for this lesson.
+
+* You will also need to register as a developer in [Amazon's developer portal](https://developer.amazon.com/).
 
 ## Setting up your skill
 
-* Log into the [Alexa Developer Portal](https://developer.amazon.com/alexa)
+<!-- https://developer.amazon.com/alexa takes me to a landing page where I need to sign in, and I still need to click the Alexa link. https://developer.amazon.com/edw/home.html is a direct link that works, but with a name like /edw, I'm not sure if that URL is a reliable permalink. -->
+
+* Log into the [Amazon Developer Portal](https://developer.amazon.com), and then click the Alexa link at the top of the page. You'll be prompted to choose a starting point (Alexa Skills Kit or Alexa Voice Service). Click Get Started under the Alexa Skills Kit option:
 
 <img src="images/alexa-skills-portal.png" width="100%"/>
+
+* Click the Add a New Skill button
+
+<img src="images/add-new-skill.png" width="100%"/>
 
 * Give the skill a name
   * "Name of the skill that is displayed to customers in the Alexa app. Must be between 2-50 characters."
