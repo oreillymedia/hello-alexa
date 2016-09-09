@@ -116,13 +116,13 @@ NOTE: You can also copy this file from this Lesson's [GitHub repository](https:/
 ----
 'use strict';
 
-var Alexa = require('alexa-sdk');
+var Alexa = require('alexa-sdk'); // <1>
 
-require('dotenv').config();
+require('dotenv').config(); // <2>
 
-var SKILL_NAME = 'Tide Pooler';
+var SKILL_NAME = 'Tide Pooler'; // <3>
 
-exports.handler = function(event, context, callback) {
+exports.handler = function(event, context, callback) { // <4>
     var alexa = Alexa.handler(event, context);
     alexa.APP_ID = APP_ID;
     alexa.registerHandlers(handlers);
@@ -131,7 +131,7 @@ exports.handler = function(event, context, callback) {
 
 var handlers = {
     'LaunchRequest': function () {
-        this.emit('GetTideIntent');
+        this.emit('AMAZON.HelpIntent');
     },
     'GetTideIntent': function () {
         var citySlot = this.event.request.intent.slots.City;
