@@ -15,7 +15,7 @@ exports.handler = function(event, context, callback) {
 
 var handlers = {
     'LaunchRequest': function () {
-        this.emit('GetFact');
+        this.emit('GetTideIntent');
     },
     'GetTideIntent': function () {
         var citySlot = this.event.request.intent.slots.City;
