@@ -1,0 +1,24 @@
+{
+  "name": "hello-alexa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oreillymedia/hello-alexa.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oreillymedia/hello-alexa/issues"
+  },
+  "homepage": "https://github.com/oreillymedia/hello-alexa",
+  "dependencies": {
+    "alexa-sdk": "^1.0.5",
+    "dotenv": "^2.0.0",
+    "node-lambda": "^0.8.9"
+  }
+}
