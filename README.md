@@ -21,6 +21,8 @@ With all the prerequisites in place, you're ready to define your skill. There ar
 
 * Click the Add a New Skill button
 
+In this step, you'll define the basic characteristics of the skill: its name, the name that people use to invoke it, and a couple of other settings.
+
 <img src="images/add-new-skill.png" width="100%"/>
 
 * Set the following options:
@@ -32,9 +34,55 @@ With all the prerequisites in place, you're ready to define your skill. There ar
 
 <img src="images/set-skill-information.png" width="100%"/>
 
+
 ### Step 2: Define the Skill's Interaction Model
 
-The interaction model determines...
+Now you're in the Interaction Model section of the setup process. This is where you describe what sorts of things you can say to the skill. The first part is the _intent schema_, which defines the _intents_, or kinds of interactions your skill has. A given intent  corresponds to a function that you'll define later; it will look up tide info, format it into a nice result, and that will be read back to the user. The second part is a collection of utterances, and they are (mostly) human-readable sentences with optional _slots_ for one or more parameters. Not all skills will need a parameter, but Tide Pooler needs to know what city the user is curious about.
+
+Put the following schema into the Intent Schema. The first intent is _GetTideIntent_, which is the intent for asking about the high tide. The other intents allow users to ask the skill for help, or to stop or cancel it.
+
+    {
+      "intents": [
+        {
+          "intent": "GetTideIntent"
+            "slots": [
+              {
+                "name": "City",
+                "type": "AMAZON.US_CITY"
+              }
+          ]
+        },
+        {
+          "intent": "AMAZON.HelpIntent"
+        },
+        {
+          "intent": "AMAZON.StopIntent"
+        },
+        {
+          "intent": "AMAZON.CancelIntent"
+        }
+      ]
+    }
+
+Now you're ready to get into the actual things you can ask the skill. Put the following text into the Sample Utterances field. Note how each utterance refers to the City slot:
+
+    GetTideIntent when is high tide in {City}
+    GetTideIntent when will it be high tide in {City}
+    GetTideIntent what time is high tide (for|in) {City}
+
+The GetTideIntent signifies that the user wants to know when high tide is. They can ask it in several ways:
+
+* When is high tide in Newport, Rhode Island?
+* When will it be high tide in New Bedford, Massachusetts?
+* What time is high tide for Gloucester, Massachusetts?
+
+And there's one more: the parentheses and pipe symbol in `(for|in)` indicate that the user can say either "for" _or_ "in" there, which gives one more variation:
+
+* What time is high tide in Gloucester, Massachusetts?
+
+Because this skill is only using the built-in `AMAZON.US_CITY` slot type, you won't need to define any Custom Slot Types.
+
+Click Next, and you'll move on to the Configuration step.
 
 # Getting started
 
