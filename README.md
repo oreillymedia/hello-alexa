@@ -10,22 +10,31 @@
 
 ## Setting up your skill
 
-<!-- https://developer.amazon.com/alexa takes me to a landing page where I need to sign in, and I still need to click the Alexa link. https://developer.amazon.com/edw/home.html is a direct link that works, but with a name like /edw, I'm not sure if that URL is a reliable permalink. -->
-
-* Log into the [Amazon Developer Portal](https://developer.amazon.com), and then click the Alexa link at the top of the page. You'll be prompted to choose a starting point (Alexa Skills Kit or Alexa Voice Service). Click Get Started under the Alexa Skills Kit option:
+With all the prerequisites in place, you're ready to define your skill. There are several steps in this process. First, log into the [Amazon Developer Portal](https://developer.amazon.com), and then click the Alexa link at the top of the page. You'll be prompted to choose a starting point (Alexa Skills Kit or Alexa Voice Service). Click Get Started under the Alexa Skills Kit option:
 
 <img src="images/alexa-skills-portal.png" width="100%"/>
+
+
+<!-- https://developer.amazon.com/alexa takes me to a landing page where I need to sign in, and I still need to click the Alexa link. https://developer.amazon.com/edw/home.html is a direct link that works, but with a name like /edw, I'm not sure if that URL is a reliable permalink. -->
+
+### Step 1: Add the New Skill
 
 * Click the Add a New Skill button
 
 <img src="images/add-new-skill.png" width="100%"/>
 
-* Give the skill a name
-  * "Name of the skill that is displayed to customers in the Alexa app. Must be between 2-50 characters."
-* Give the skill an "invocation name"
-  * "The name customers use to activate the skill. For example, “Alexa ask Tide Pooler…”."  
-  * See  [Choosing the Invocation Name for a Custom Skill
-](https://developer.amazon.com/appsandservices/solutions/alexa/alexa-skills-kit/docs/choosing-the-invocation-name-for-an-alexa-skill) for more detail on choosing a name.
+* Set the following options:
+  * Skill type: Make sure this is set to Custom Interaction Model.
+  * Name: This is what appears in the Alexa app. Call it "Tide Pooler."
+  * Invocation Name: This is how users will activate the skill. Use "Tide Pooler" here as well.
+  * Audio Player: You can leave this set to No for this skill. If you were playing audio, such a music, that you wanted to allow users to stop or pause, you'd need this. You won't need it here.
+* Click Next.
+
+<img src="images/set-skill-information.png" width="100%"/>
+
+### Step 2: Define the Skill's Interaction Model
+
+The interaction model determines...
 
 # Getting started
 
