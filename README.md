@@ -70,16 +70,16 @@ Now you're ready to get into the actual things you can ask the skill. Put the fo
 
     GetTideIntent when is high tide in {City}
     GetTideIntent when will it be high tide in {City}
-    GetTideIntent what time is high tide (for|in) {City}
+    GetTideIntent what time is high tide for {City}
+    GetTideIntent what time is high tide in {City}
+
+NOTE: You can also copy the list of utterances from this Lesson's [GitHub repository](https://github.com/oreillymedia/hello-alexa/blob/master/config/utterances.txt).
 
 The GetTideIntent signifies that the user wants to know when high tide is. They can ask it in several ways:
 
 * When is high tide in Newport, Rhode Island?
 * When will it be high tide in New Bedford, Massachusetts?
 * What time is high tide for Gloucester, Massachusetts?
-
-And there's one more: the parentheses and pipe symbol in `(for|in)` indicate that the user can say either "for" _or_ "in" there, which gives one more variation:
-
 * What time is high tide in Gloucester, Massachusetts?
 
 Because this skill is only using the built-in `AMAZON.US_CITY` slot type, you won't need to define any Custom Slot Types.
