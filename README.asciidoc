@@ -243,6 +243,43 @@ image::images/availability-zones.png[]
 
 image::images/select-blueprint.png[]
 
+* Now you're prompted to configure the trigger for this function. Click the dotted shape to the left of Lambda, and choose Alexa Skills Kit, then click Next:
+
+image::images/configure-triggers.png[]
+
+* On the next screen, configure your function as follows:
+Name::: Call it TidePooler
+Description::: Give it a short description like "High Tide Lookup".
+Runtime::: Leave this set at Node.js 4.3
+Code Entry Type::: Select Upload a Zip File from the menu.
+
+image::images/configure-function.png[]
+
+* Click the Upload button, and select the _hello-alexa.zip_ file you created earlier. Scroll down, and under Role, select Create a New Custom Role. The IAM manager will open in a new tab. Make sure Create a New IAM Role is selected, and that the Role Name is lambda_basic_execution. Click Allow to create the role and you'll return to the previous tab.
+
+image::images/new_role.png[]
+
+* Leave the other values at their defaults, scroll down, and click Next. You'll be prompted to review your function, as shown here:
+
+image::images/review_function.png[]
+
+* Click Create Function, and you'll be taken to the AWS dashboard page for the function. The Lambda function's ARN will appear in the upper right, and begins with _arn:aws:lambda:us-east_. Copy the entire ARN. You will need it in the next step.
+
+=== Connect the Alexa Skill to the Lambda function
+
+Return to https://developer.amazon.com, sign in, and then click the Alexa link. Click the Get Started link under Alexa Skills Kit, and choose Tide Pooler from the list of skills. Click Configuration from the list on the left, then:
+
+* Under the Endpoint section, choose Lambda ARN.
+
+* Paste your Lambda function's ARN into the field.
+
+image::images/connect-lambda.png[]
+
+* Leave Account Linking set to No, and click Next. You'll be taken to the service simulator.
+
+
+
+Now you're ready to test the skill.  Scroll down to the Enter Utterance field, and type in a supported utterance, such as "When is high tide in Boston?"
 
 ==== Hints
 
