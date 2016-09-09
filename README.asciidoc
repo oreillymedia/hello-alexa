@@ -8,10 +8,14 @@ FIXME: need intro
 You'll need a few things before you can follow this lesson:
 
 * You'll need to be comfortable with using your computer's terminal or command prompt and know how to create and edit plain text files.
+
+////
 * Install Git on your computer.
 macOS::: you can get Git by  installing Xcode or its command line tools. Type `xcode-select --install` in a Terminal window, and macOS should prompt you to install the command line tools. If not, you may need to install Xcode first.
 Windows::: You can install Git for Windows from here: https://git-scm.com/download/win
 Linux::: You can install Git from your package repository. For example, on Ubuntu, `apt-get install git` will do the trick.
+////
+
 * Install Node.js (version 5 or later)  and update npm using these instructions: https://docs.npmjs.com/getting-started/installing-node
 * You will need an AWS account; the https://aws.amazon.com/free/[free tier] is sufficient for this lesson.
 * You will also need to register as a developer in https://developer.amazon.com/[Amazon's developer portal].
@@ -95,6 +99,10 @@ Click Save, and wait while the interaction model is built. When it's done, the m
 
 === Building the Sample Skill
 
+Now you're ready to build an AWS Lambda function that you'll install in AWS. It will be called on demand, when it's needed.
+
+==== Step 1: Create the package.json File
+
 Open a Terminal or Command Prompt, create a new directory named _tide-pooler_, and cd into it. Next, create a file named package.json in the _tide-pooler_ directory and add these lines to it:
 
     {
@@ -115,6 +123,8 @@ Save the file, and in your terminal or command prompt, run this command to pull 
     total 8
     drwxr-xr-x  40 bjepson  staff  1360 Sep  9 15:28 node_modules
     -rw-r--r--   1 bjepson  staff   197 Sep  9 15:28 package.json
+
+==== Step 2: Create the JavaScript Handlers
 
 Next, create a file named _index.js_, and put the following code in it:
 
@@ -174,12 +184,36 @@ var handlers = {
 };
 ----
 
-# Getting started
+<1> This brings in the Node.js Alexa SDK. When you upload this function to AWS Lambda, you'll be sending a zip file that includes _index.js_ as well as the _node_modules_ directory, which includes the Alexa SDK and many other dependencies.
 
+<2> The _dotenv_ module is a helper utility that will pull in the code from the .env file, which you'll create later. This file will contain your AWS API and app keys.
+
+<3> You'll use the name of the skill in various places, so it's in a handy variable here.
+
+<4> This function sets things up so that all requests are routed to the appropriate handlers, defined next.
+
+<5> `LaunchRequest` is called if the skill is invoked without a command. Since you need a city name to do anything, this handler just calls the help handler.
+
+<6> Inside the handler for the GetTideIntent, the code tries to obtain the city the user asked about.
+
+<7> If there was indeed a city in the request, and it has a name, the handler can do its job.
+
+<8> Here, the handler creates three strings: one for the card title (which will be displayed in the Alexa app), another for the high tide time (hardcoded for now), and the speech output that Alexa will speak to the user.
+
+<9> This causes Alexa to speak her response, and to display a card in the user's Alexa app.
+
+<10> If the handler couldn't discern a city name, Alexa will ask the user to try again.
+
+<11> This causes Alexa to speak the help text for this skill.
+
+<12> These last two handlers take care of a user stopping or cancelling the skill. In most skills, these will have the same behavior. See https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/implementing-the-built-in-intents[Implementing the Built-in Intents] for more information.
+
+////
 * Clone this repository
 * run `npm install`
+////
 
-# Setting up your keys
+==== Step 3: Set up Your API Keys
 
 Create a file called `.env` to store all the various keys you'll need, like this:
 
@@ -190,4 +224,8 @@ APP_ID=<your app id>
 
 In your program, you'll refer to these as `process.env.AWS_KEY`, `process.env.APP_ID`, etc.
 
-Note that we add the `.env` to `.gitignore` so that you don't accidentally check your keys into your github repo, which would be bad!
+NOTE: If you are putting this into a Git repo, you should be sure to add a line for the `.env` file to your `.gitignore` file so that you don't accidentally check your keys into a public repository, which would be bad!
+
+==== Create and Deploy the Lambda Function
+
+TK
