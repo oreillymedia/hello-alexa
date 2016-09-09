@@ -281,7 +281,71 @@ Now you're ready to test the skill.  Scroll down to the Enter Utterance field, a
 
 image::images/test-skill.png[]
 
+==== Where Next?
 
-==== Hints
+There is a lot more you can do from here. The most obvious upgrade is to actually look up high tide information by calling a web service like the Weather Underground API. Right now, Alexa is just telling us that high tide is always at 5pm.
 
-Lambda local instructions.
+One thing you didn't learn how to do was test this on your own Amazon Echo.  To do this, you'll need to register your device for testing, among other things. See https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/testing-an-alexa-skill[Testing a Custom Skill] for more details.
+
+What if you don't have an Amazon Echo? You could build your own with the $35 Rapsberry Pi: https://www.raspberrypi.org/blog/amazon-echo-homebrew-version/
+
+==== Testing Locally
+
+You might get tired of having to upload a zip file every time you want to test. To test locally, you can install https://www.npmjs.com/package/lambda-local[lambda-local], which allows you to send a JSON file containing a request to a Lambda function.
+
+Install it according to the instructions, then create a file called _event-sample.js_ with the following contents:
+
+----
+module.exports = {
+  "session": {
+    "application": {
+      "applicationId": "TEST"
+    },
+    "user": {
+      "userId": "Anonymous"
+    }
+  },
+  "request": {
+    "type": "IntentRequest",
+    "intent": {
+      "name": "GetTideIntent",
+      "slots": {
+        "City": {
+          "name": "City",
+          "value": "Boston"
+        }
+      }
+    }
+  }
+}
+----
+
+NOTE: You can also copy this file from this Lesson's https://github.com/oreillymedia/hello-alexa/blob/master/index.js[GitHub repository].
+
+Save that in the same folder as _index.js_, and test it with this command:
+
+----
+lambda-local -l index.js -h handler -e event-sample.js
+----
+
+In the output, you'll see the response that would have been spoken:
+
+----
+{
+  "version": "1.0",
+  "response": {
+    "outputSpeech": {
+      "type": "SSML",
+      "ssml": "<speak> It will be high tide in Boston at 5:00pm </speak>"
+    },
+    "shouldEndSession": true,
+    "card": {
+      "type": "Simple",
+      "title": "Tide Pooler",
+      "content": "Tide Pooler High Tide For - Boston"
+    }
+  },
+  "sessionAttributes": {}
+}
+----
+
