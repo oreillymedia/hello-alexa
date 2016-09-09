@@ -86,7 +86,86 @@ Because this skill is only using the built-in `AMAZON.US_CITY` slot type, you wo
 
 Click Save, and wait while the interaction model is built. When it's done, the message below the Save button should read "Successfully updated the interaction model."
 
-###
+## Building the Sample Skill
+
+Open a Terminal or Command Prompt, create a new directory named _tide-pooler_, and cd into it. Next, create a file named package.json in the _tide-pooler_ directory and add these lines to it:
+
+    {
+      "name": "tide-pooler",
+      "version": "1.0.0",
+      "description": "",
+      "main": "index.js",
+      "dependencies": {
+        "alexa-sdk": "^1.0.5",
+        "dotenv": "^2.0.0",
+        "node-lambda": "^0.8.9"
+      }
+    }
+
+Save the file, and in your terminal or command prompt, run this command to pull down all the dependencies you need for your skill: `npm install`. Now you should see a _node_modules_ directory alongside the package.json file:
+
+    $ ls -l
+    total 8
+    drwxr-xr-x  40 bjepson  staff  1360 Sep  9 15:28 node_modules
+    -rw-r--r--   1 bjepson  staff   197 Sep  9 15:28 package.json
+
+Next, create a file named _index.js_, and put the following code in it:
+
+NOTE: You can also copy this file from this Lesson's [GitHub repository](https://github.com/oreillymedia/hello-alexa/blob/master/index.js).
+
+----
+'use strict';
+
+var Alexa = require('alexa-sdk');
+
+require('dotenv').config();
+
+var SKILL_NAME = 'Tide Pooler';
+
+exports.handler = function(event, context, callback) {
+    var alexa = Alexa.handler(event, context);
+    alexa.APP_ID = APP_ID;
+    alexa.registerHandlers(handlers);
+    alexa.execute();
+};
+
+var handlers = {
+    'LaunchRequest': function () {
+        this.emit('GetTideIntent');
+    },
+    'GetTideIntent': function () {
+        var citySlot = this.event.request.intent.slots.City;
+        var cityName;
+        if (citySlot && citySlot.value) {
+            cityName = citySlot.value;
+
+            var cardTitle = SKILL_NAME + " High Tide For - " + cityName;
+            var time = "5:00pm";
+            var speechOutput = "It will be high tide in " +
+                               cityName + " at " + time;
+            this.emit(':tellWithCard', speechOutput, SKILL_NAME,
+                      cardTitle, time);
+
+          } else {
+            var speechOutput =
+                'I\'m sorry, I don\'t know when high tide is for that location';
+            this.emit(':tell', speechOutput);
+          }
+    },
+    'AMAZON.HelpIntent': function () {
+        var speechOutput = "You can say when is high tide in city name, or, " +
+                           "you can say exit... What can I help you with?";
+        var reprompt = "What can I help you with?";
+        this.emit(':ask', speechOutput, reprompt);
+    },
+    'AMAZON.CancelIntent': function () {
+        this.emit(':tell', 'Goodbye!');
+    },
+    'AMAZON.StopIntent': function () {
+        this.emit(':tell', 'Goodbye!');
+    }
+};
+----
 
 # Getting started
 

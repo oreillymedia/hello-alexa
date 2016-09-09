@@ -25,16 +25,20 @@ var handlers = {
 
             var cardTitle = SKILL_NAME + " High Tide For - " + cityName;
             var time = "5:00pm";
-            var speechOutput = "It will be high tide in " + cityName + " at " + time;
-            this.emit(':tellWithCard', speechOutput, SKILL_NAME, cardTitle, time);
+            var speechOutput = "It will be high tide in " +
+                               cityName + " at " + time;
+            this.emit(':tellWithCard', speechOutput, SKILL_NAME,
+                      cardTitle, time);
 
           } else {
-            var speechOutput = 'I\'m sorry, I currently do not know when high tide is for that location';
+            var speechOutput =
+                'I\'m sorry, I don\'t know when high tide is for that location';
             this.emit(':tell', speechOutput);
           }
     },
     'AMAZON.HelpIntent': function () {
-        var speechOutput = "You can say when is high tide in city name, or, you can say exit... What can I help you with?";
+        var speechOutput = "You can say when is high tide in city name, or, " +
+                           "you can say exit... What can I help you with?";
         var reprompt = "What can I help you with?";
         this.emit(':ask', speechOutput, reprompt);
     },
