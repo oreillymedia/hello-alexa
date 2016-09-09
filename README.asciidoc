@@ -320,7 +320,7 @@ module.exports = {
 }
 ----
 
-NOTE: You can also copy this file from this Lesson's https://github.com/oreillymedia/hello-alexa/blob/master/index.js[GitHub repository].
+NOTE: You can also copy this file from this Lesson's https://github.com/oreillymedia/hello-alexa/blob/master/event-sample.js[GitHub repository].
 
 Save that in the same folder as _index.js_, and test it with this command:
 
