@@ -277,9 +277,10 @@ image::images/connect-lambda.png[]
 
 * Leave Account Linking set to No, and click Next. You'll be taken to the service simulator.
 
+Now you're ready to test the skill.  Scroll down to the Enter Utterance field, and type in a supported utterance, such as "When is high tide in Boston?" Click Ask Tide Pooler, and you should see the JSON for both the request and response appear in the text fields below. You can click the Play button to the right of the Listen label to hear the response:
 
+image::images/test-skill.png[]
 
-Now you're ready to test the skill.  Scroll down to the Enter Utterance field, and type in a supported utterance, such as "When is high tide in Boston?"
 
 ==== Hints
 
