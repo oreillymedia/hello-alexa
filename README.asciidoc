@@ -215,17 +215,35 @@ var handlers = {
 
 ==== Step 3: Set up Your API Keys
 
-Create a file called `.env` to store all the various keys you'll need, like this:
+Create a file called `.env` to store all the various keys you'll need. For now, you'll just need your App Id. Return to https://developer.amazon.com, sign in, and then click the Alexa link. Click the Get Started link under Alexa Skills Kit, and choose Tide Pooler from the list of skills. You should see the application id; copy that value into the _.env_ file as shown, replacing `<your app id>` with the app ID from Amazon:
 
 ```
-AWS_KEY=<your aws key>
 APP_ID=<your app id>
 ```
 
-In your program, you'll refer to these as `process.env.AWS_KEY`, `process.env.APP_ID`, etc.
+In your program, you'll refer to this as `process.env.APP_ID`.
 
 NOTE: If you are putting this into a Git repo, you should be sure to add a line for the `.env` file to your `.gitignore` file so that you don't accidentally check your keys into a public repository, which would be bad!
 
-==== Create and Deploy the Lambda Function
+Now you need to zip up everything in the folder into a zip file called _hello-alexa.zip_. Using the command line version of zip, run this command:
 
-TK
+----
+zip -r hello-alexa.zip index.js package.json .env node_modules
+----
+
+=== Deploy the Lambda Function
+
+Next, sign into the https://aws.amazon.com/console/[AWS Console]. Click Lambda from the list of services. Then:
+
+* In the upper right, click the menu to the right of your name, and make sure your availability zone is set to N. Virginia, as this is the only zone with support for Alexa Skills:
+
+image::images/availability-zones.png[]
+
+* Next, click Get Started Now. You'll be prompted to choose a Blueprint. Scroll down to the bottom of the screen and click Skip.
+
+image::images/select-blueprint.png[]
+
+
+==== Hints
+
+Lambda local instructions.
