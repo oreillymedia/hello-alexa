@@ -84,7 +84,7 @@ The GetTideIntent signifies that the user wants to know when high tide is. They 
 
 Because this skill is only using the built-in `AMAZON.US_CITY` slot type, you won't need to define any Custom Slot Types.
 
-Click Next, and you'll move on to the Configuration step.
+Click Save, and wait while the interaction model is built. When it's done, the message below the Save button should read "Successfully updated the interaction model."
 
 ###
 
