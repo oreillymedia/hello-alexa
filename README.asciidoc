@@ -1,7 +1,7 @@
 
 == Build Your Own Alexa Skill
 
-FIXME: need intro
+In this Lesson, you'll learn how to create an Amazon Alexa Skill. You'll see how to set up and configure the voice interactions, and also how to create an AWS Lambda function that handles the requests and responses that users initiate.
 
 === Prerequisites
 
