@@ -1,9 +1,9 @@
 
-== Build Your Own Alexa Skill
+= Build Your Own Alexa Skill
 
 In this Lesson, you'll learn how to create an Amazon Alexa Skill. You'll see how to set up and configure the voice interactions, and also how to create an AWS Lambda function that handles the requests and responses that users initiate.
 
-=== Prerequisites
+== Prerequisites
 
 You'll need a few things before you can follow this lesson:
 
@@ -20,14 +20,14 @@ Linux::: You can install Git from your package repository. For example, on Ubunt
 * You will need an AWS account; the https://aws.amazon.com/free/[free tier] is sufficient for this lesson.
 * You will also need to register as a developer in https://developer.amazon.com/[Amazon's developer portal].
 
-=== Setting up your skill
+== Setting up your skill
 
 With all the prerequisites in place, you're ready to define your skill. There are several steps in this process. First, log into the https://developer.amazon.com[Amazon Developer Portal], and then click the Alexa link at the top of the page. You'll be prompted to choose a starting point (Alexa Skills Kit or Alexa Voice Service). Click Get Started under the Alexa Skills Kit option:
 
 image::images/alexa-skills-portal.png[]
 
 
-==== Step 1: Add the New Skill
+=== Step 1: Add the New Skill
 
 * Click the Add a New Skill button
 
@@ -44,7 +44,7 @@ Audio Player::: You can leave this set to No for this skill. If you were playing
 
 image::images/set-skill-information.png[]
 
-==== Step 2: Define the Skill's Interaction Model
+=== Step 2: Define the Skill's Interaction Model
 
 Now you're in the Interaction Model section of the setup process. This is where you describe what sorts of things you can say to the skill. The first part is the _intent schema_, which defines the _intents_, or kinds of interactions your skill has. A given intent  corresponds to a function that you'll define later; it will look up tide info, format it into a nice result, and that will be read back to the user. The second part is a collection of utterances, and they are (mostly) human-readable sentences with optional _slots_ for one or more parameters. Not all skills will need a parameter, but Tide Pooler needs to know what city the user is curious about.
 
@@ -97,11 +97,11 @@ Because this skill is only using the built-in `AMAZON.US_CITY` slot type, you wo
 
 Click Save, and wait while the interaction model is built. When it's done, the message below the Save button should read "Successfully updated the interaction model."
 
-=== Building the Sample Skill
+== Building the Sample Skill
 
 Now you're ready to build an AWS Lambda function that you'll install in AWS. It will be called on demand, when it's needed.
 
-==== Step 1: Create the package.json File
+=== Step 1: Create the package.json File
 
 Open a Terminal or Command Prompt, create a new directory named _tide-pooler_, and cd into it. Next, create a file named package.json in the _tide-pooler_ directory and add these lines to it:
 
@@ -124,7 +124,7 @@ Save the file, and in your terminal or command prompt, run this command to pull 
     drwxr-xr-x  40 bjepson  staff  1360 Sep  9 15:28 node_modules
     -rw-r--r--   1 bjepson  staff   197 Sep  9 15:28 package.json
 
-==== Step 2: Create the JavaScript Handlers
+=== Step 2: Create the JavaScript Handlers
 
 Next, create a file named _index.js_, and put the following code in it:
 
@@ -213,7 +213,7 @@ var handlers = {
 * run `npm install`
 ////
 
-==== Step 3: Set up Your API Keys
+=== Step 3: Set up Your API Keys
 
 Create a file called `.env` to store all the various keys you'll need. For now, you'll just need your App Id. Return to https://developer.amazon.com, sign in, and then click the Alexa link. Click the Get Started link under Alexa Skills Kit, and choose Tide Pooler from the list of skills. You should see the application id; copy that value into the _.env_ file as shown, replacing `<your app id>` with the app ID from Amazon:
 
@@ -231,7 +231,7 @@ Now you need to zip up everything in the folder into a zip file called _hello-al
 zip -r hello-alexa.zip index.js package.json .env node_modules
 ----
 
-=== Deploy the Lambda Function
+== Deploy the Lambda Function
 
 Next, sign into the https://aws.amazon.com/console/[AWS Console]. Click Lambda from the list of services. Then:
 
@@ -265,7 +265,7 @@ image::images/review_function.png[]
 
 * Click Create Function, and you'll be taken to the AWS dashboard page for the function. The Lambda function's ARN will appear in the upper right, and begins with _arn:aws:lambda:us-east_. Copy the entire ARN. You will need it in the next step.
 
-=== Connect the Alexa Skill to the Lambda function
+== Connect the Alexa Skill to the Lambda function
 
 Return to https://developer.amazon.com, sign in, and then click the Alexa link. Click the Get Started link under Alexa Skills Kit, and choose Tide Pooler from the list of skills. Click Configuration from the list on the left, then:
 
@@ -281,7 +281,7 @@ Now you're ready to test the skill.  Scroll down to the Enter Utterance field, a
 
 image::images/test-skill.png[]
 
-==== Where Next?
+=== Where Next?
 
 There is a lot more you can do from here. The most obvious upgrade is to actually look up high tide information by calling a web service like the Weather Underground API. Right now, Alexa is just telling us that high tide is always at 5pm.
 
@@ -289,7 +289,7 @@ One thing you didn't learn how to do was test this on your own Amazon Echo.  To 
 
 What if you don't have an Amazon Echo? You could build your own with the $35 Rapsberry Pi: https://www.raspberrypi.org/blog/amazon-echo-homebrew-version/
 
-==== Testing Locally
+=== Testing Locally
 
 You might get tired of having to upload a zip file every time you want to test. To test locally, you can install https://www.npmjs.com/package/lambda-local[lambda-local], which allows you to send a JSON file containing a request to a Lambda function.
 
